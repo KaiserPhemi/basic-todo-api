@@ -1,0 +1,12 @@
+{
+  "name": "basic-todo-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KaiserPhemi/basic-todo-api.git",
+  "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
