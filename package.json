@@ -5,8 +5,12 @@
   "repository": "https://github.com/KaiserPhemi/basic-todo-api.git",
   "author": "KaiserPhemi <oluwafemi.akinwa@andela.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6"
   }
 }

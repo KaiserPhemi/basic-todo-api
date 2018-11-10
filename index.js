@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 5555;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // routes
 app.get('/', (req, res) => {
-  res.send
+  res.send({ message: 'Welcome to the todo API' });
 })
 
 // start server
