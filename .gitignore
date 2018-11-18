@@ -63,3 +63,4 @@ typings/
 # misc
 .vscode
 .DS_Store
+.env

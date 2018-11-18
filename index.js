@@ -1,19 +1,15 @@
 // module imports
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+import http from 'http';
+import app from './src/config/app';
 
-// instantiate app
-const app = express();
-const port = 5555;
+// declare port
+const port = process.env.PORT || 5555;
+app.set('port', port);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// routes
-app.get('/', (req, res) => {
-  res.send({ message: 'Welcome to the todo API' });
-})
+// create server
+const server = http.createServer(app);
 
 // start server
-app.listen(port, () => console.log(`Server running on port ${port}`));
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
