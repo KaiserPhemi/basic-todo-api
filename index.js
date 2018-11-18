@@ -1,15 +1,16 @@
-// module imports
-import http from 'http';
-import app from './src/config/app';
+// express app
+import app from './src/app';
 
 // declare port
 const port = process.env.PORT || 5555;
 app.set('port', port);
 
-// create server
-const server = http.createServer(app);
 
 // start server
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(port, (err) => {
+  if (err) {
+    throw err;
+  }
+  // eslint-disable-next-line no-console
+  console.log(`Server started. Listening on port ${port}...`);
 });

@@ -2,20 +2,20 @@
 import express from 'express';
 
 // controller
-import todoController from '../controllers/todoController';
+import todoController from './todoControllers';
 
 // route object
-const todoRouter = express.Router();
+const todoRoute = express.Router();
 
 // default routes for todos
-todoRouter.route('/')
+todoRoute.route('/')
   .get(todoController.getAllTodos)
   .post(todoController.createTodo);
 
 // route for a single todo item
-todoRouter.route('/:id')
+todoRoute.route('/:id')
   .get(todoController.getTodo)
   .put(todoController.updateTodo)
   .delete(todoController.deleteTodo);
 
-export default todoRouter;
+export default todoRoute;

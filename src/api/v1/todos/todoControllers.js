@@ -7,8 +7,8 @@ import db from '../../db/models';
 const todoController = {
   /**
    * @desc retrieves all todo items
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    */
   getAllTodos(req, res) {
     db.Todo
@@ -24,10 +24,10 @@ const todoController = {
 
   /**
    * @desc creates a todo item
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    */
-  createTodo(req, res) { 
+  createTodo(req, res) {
     const {
       title,
       description,
@@ -61,11 +61,11 @@ const todoController = {
           });
       });
   },
-  
+
   /**
    * @desc
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    */
   getTodo(req, res) {
     const todoId = req.params.id;
@@ -96,13 +96,13 @@ const todoController = {
           });
       });
   },
-  
+
   /**
    * @desc updates a todo item
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    */
-  updateTodo(req, res) { 
+  updateTodo(req, res) {
     db.Todo
       .findById(req.params.id)
       .then(todo => {
@@ -137,11 +137,11 @@ const todoController = {
           });
       });
   },
-  
+
   /**
    * @desc handles delete of a todo item
-   * @param {object} req 
-   * @param {object} res 
+   * @param {object} req
+   * @param {object} res
    */
   deleteTodo(req, res) {
     const todoId = req.params.id;
