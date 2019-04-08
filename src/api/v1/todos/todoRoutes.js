@@ -13,9 +13,9 @@ todoRoute.route('/')
   .post(todoController.createTodo);
 
 // route for a single todo item
-// todoRoute.route('/:id')
-//   .get(todoController.getTodo)
-//   .put(todoController.updateTodo)
-//   .delete(todoController.deleteTodo);
+todoRoute.route('/:id')
+  .get(todoController.getTodo)
+  .put(todoController.updateTodo)
+  .delete(todoController.deleteTodo);
 
 export default todoRoute;

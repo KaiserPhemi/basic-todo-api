@@ -62,125 +62,102 @@ const todoController = {
       });
   },
 
-  //   /**
-  //    * @desc
-  //    * @param {object} req
-  //    * @param {object} res
-  //    */
-  //   getTodo(req, res) {
-  //     // const todoId = req.params.id;
-  //     // if (!todoId) {
-  //     //   res.status(400)
-  //     //     .send({
-  //     //       message: 'Invalid todo id'
-  //     //     });
-  //     // }
-  //     // db.Todo.findById(todoId)
-  //     //   .then(todo => {
-  //     //     if (!todo) {
-  //     //       res.status(404)
-  //     //         .send({
-  //     //           message: 'Todo item not found'
-  //     //         });
-  //     //     }
-  //     //     res.status(200)
-  //     //       .send({
-  //     //         message: 'Todo item retrieved successfully',
-  //     //         todo,
-  //     //       });
-  //     //   })
-  //     //   .catch(() => {
-  //     //     res.status(500)
-  //     //       .send({
-  //     //         message: 'Todo item cannot be retrieved'
-  //     //       });
-  //     //   });
-  //   },
+  /**
+   * @desc retrieves a single todo item
+   * @param {object} req
+   * @param {object} res
+   */
+  getTodo(req, res) {
+    const { id } = req.params;
+    Todo.findById(id)
+      .then(todo => {
+        if (!todo) {
+          return res.status(404)
+            .send({
+              message: 'Todo item not found',
+            });
+        }
+        return res.status(201)
+          .send({
+            message: 'Todo retrieved successfully',
+            todo
+          });
+      })
+      .catch(err => {
+        return res.status(500)
+          .send({
+            message: 'An error has occured',
+            err
+          });
+      });
+  },
 
-  //   /**
-  //    * @desc updates a todo item
-  //    * @param {object} req
-  //    * @param {object} res
-  //    */
-  //   updateTodo(req, res) {
-  //     // db.Todo
-  //     //   .findById(req.params.id)
-  //     //   .then(todo => {
-  //     //     if (!todo) {
-  //     //       res.status(404)
-  //     //         .send({
-  //     //           message: 'Todo item not found',
-  //     //         });
-  //     //     }
-  //     //     todo.update(req.body)
-  //     //       .then(updatedTodo => {
-  //     //         db.Todo.findById(updatedTodo.id)
-  //     //           .then(() => {
-  //     //             res.status(200)
-  //     //               .send({
-  //     //                 message: 'Todo item updated successfully',
-  //     //                 updatedTodo,
-  //     //               });
-  //     //           })
-  //     //           .catch(() => {
-  //     //             res.status(404)
-  //     //               .send({
-  //     //                 message: 'Todo item not found'
-  //     //               });
-  //     //           });
-  //     //       });
-  //     //   })
-  //     //   .catch(() => {
-  //     //     res.status(500)
-  //     //       .send({
-  //     //         message: 'Todo item not updated'
-  //     //       });
-  //     //   });
-  //   },
+  /**
+   * @desc updates a single todo item
+   * @param {object} req
+   * @param {object} res
+   */
+  updateTodo(req, res) {
+    const { id } = req.params;
+    const { body } = req;
+    Todo.findByIdAndUpdate(id, body, { new: true })
+      .then(todo => {
+        if (!todo) {
+          return res.status(404)
+            .send({
+              message: 'Todo item not found'
+            });
+        }
+        return res.status(201)
+          .send({
+            message: 'Todo item updated successfully.',
+            todo
+          });
+      })
+      .catch(err => {
+        return res.status(500)
+          .send({
+            message: 'Todo item not updated. Internal error',
+            err
+          });
+      });
+  },
 
-  //   /**
-  //    * @desc handles delete of a todo item
-  //    * @param {object} req
-  //    * @param {object} res
-  //    */
-  //   deleteTodo(req, res) {
-  //   //   const todoId = req.params.id;
-  //   //   db.Todo
-  //   //     .findById(todoId)
-  //   //     .then(todo => {
-  //   //       if (!todo) {
-  //   //         res.status(404)
-  //   //           .send({
-  //   //             message: 'Todo item not found'
-  //   //           });
-  //   //       }
-  //   //       const deletedTodo = todo;
-  //   //       todo.destroy()
-  //   //         .then(() => {
-  //   //           res.status(200)
-  //   //             .send({
-  //   //               message: 'Todo item deleted successfully',
-  //   //               deletedTodo,
-  //   //             });
-  //   //         })
-  //   //         .catch(deletedTodo => {
-  //   //           res.status(500)
-  //   //             .send({
-  //   //               message: 'Todo item was not deleted',
-  //   //               deletedTodo
-  //   //             });
-  //   //         });
-  //   //     })
-  //   //     .catch(deletedTodo => {
-  //   //       res.status(500)
-  //   //         .send({
-  //   //           message: 'Todo item was not deleted',
-  //   //           deletedTodo
-  //   //         });
-  //   //     });
-  //   },
-  // };
-
+  /**
+   * @desc deletes a todo item
+   * @param {object} req
+   * @param {object} res
+   */
+  deleteTodo(req, res) {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400)
+        .send({
+          message: 'Todo item id not stated'
+        });
+    }
+    Todo.findByIdAndDelete(id)
+      .then(todo => {
+        if (!todo) {
+          return res.status(404)
+            .send({
+              message: 'Todo item not found'
+            });
+        }
+        return res.status(201)
+          .send({
+            message: 'Todo item deleted successfully',
+            todo
+          });
+      })
+      .catch(err => {
+        return res.status(500)
+          .send({
+            message: 'An error occured',
+            err
+          });
+      });
+  }
 };
 
 export default todoController;

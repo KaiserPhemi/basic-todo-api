@@ -8,13 +8,19 @@ const port = process.env.PORT || 5555;
 app.set('port', port);
 
 // connect to database
-mongoose.connect('mongodb://localhost/todo-prod', { useNewUrlParser: true });
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/todoProd', { useNewUrlParser: true });
+} else {
+  mongoose.connect('mongodb://localhost/todoTest', { useNewUrlParser: true });
+}
 
 // start server
-app.listen(port, (err) => {
-  if (err) {
-    throw err;
-  }
-  // eslint-disable-next-line no-console
-  console.log(`Server started. Listening on port ${port}...`);
-});
+if (!module.parent) {
+  app.listen(port, (err) => {
+    if (err) {
+      throw err;
+    }
+    // eslint-disable-next-line no-console
+    console.log(`Server started. Listening on port ${port}...`);
+  });
+}
