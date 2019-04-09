@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 # Javascript Node CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+=======
+>>>>>>> ch(chore)
 version: 2
 jobs:
   build:
     docker:
+<<<<<<< HEAD
       # specify the version you desire here
       - image: circleci/node:8
 
@@ -13,6 +17,10 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
+=======
+      - image: circleci/node:8
+      - image: circleci/mongo:4.0.8
+>>>>>>> ch(chore)
 
     working_directory: ~/repo
 
