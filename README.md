@@ -1,10 +1,15 @@
 # to-do api
 
+[![CircleCI](https://circleci.com/gh/KaiserPhemi/basic-todo-api.svg?style=svg)](https://circleci.com/gh/KaiserPhemi/basic-todo-api)
+
 This is just a basic To-Do API for use in front-end learning or just to play around with
 
 ## Stack
 
-- Node
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [MongooseJS](https://mongoosejs.com/)
 
 ## Request Structure
 
@@ -13,7 +18,7 @@ This is just a basic To-Do API for use in front-end learning or just to play aro
 ```js
 {
   title: 'title of todo item',
-  description: 'short text to describe the todo'
+  task: 'short text to describe the todo'
 }
 ```
 
@@ -22,8 +27,8 @@ This is just a basic To-Do API for use in front-end learning or just to play aro
 ```js
 {
   title: 'title of todo item',
-  description: 'short text to describe the todo',
-  status: 'completed' || 'uncompleted'
+  task: 'short text to describe the todo',
+  completed: false
 }
 ```
 
