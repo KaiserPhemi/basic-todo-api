@@ -1,13 +1,14 @@
 // third party libraries
 import { expect } from "chai";
 import mongoose from "mongoose";
-import "babel-polyfill";
+
+// fixtures
+import { newTodo, todoArrays, invalidTodo } from "./testFixtures";
 
 // database model
 import Todo from "../todoModel";
 
-// fixtures
-const { newTodo, todoArrays, invalidTodo } = require("./testFixtures");
+process.env.NODE_ENV = "test";
 
 // test suites
 describe("Todo Model", () => {
