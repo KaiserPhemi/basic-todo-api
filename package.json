@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
-    "test": "NODE_ENV=testing mocha --require @babel/register src/**/**/*.test.js"
+    "test": "NODE_ENV=testing mocha --timeout 5000 --require @babel/register src/**/**/*.test.js --watch"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -20,6 +20,7 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
+    "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.2",
     "morgan": "^1.9.1",

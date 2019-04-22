@@ -13,8 +13,6 @@ if (process.env.NODE_ENV !== "test") {
   mongoose.connect("mongodb://localhost/todoTest", { useNewUrlParser: true });
 }
 
-console.log("We got here", process.env.NODE_ENV);
-
 // start server
 if (!module.parent) {
   app.listen(port, err => {
