@@ -1,17 +1,17 @@
 // dependencies
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const { Schema, model } = mongoose;
+const { Schema, model, models } = mongoose;
 
 // define schema
 const todoSchema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   task: {
     type: String,
-    required: true,
+    required: true
   },
   completed: {
     type: Boolean,
@@ -21,6 +21,6 @@ const todoSchema = new Schema({
 });
 
 // define model
-const Todo = model('Todo', todoSchema);
+const Todo = mongoose.models.Todo || model("Todo", todoSchema);
 
 export default Todo;
