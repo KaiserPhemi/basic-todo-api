@@ -4,7 +4,6 @@ jobs:
     docker:
       - image: circleci/node:8
       - image: circleci/mongo:4.0.8
-
     working_directory: ~/repo
 
     steps:
